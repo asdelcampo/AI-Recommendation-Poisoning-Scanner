@@ -34,11 +34,11 @@ Never skip this sequence. No exceptions.
 ## Project Rules
 
 ### Crawler
-- Use **Scrapling with Chrome TLS impersonation mode** for all HTTP fetches — never vanilla `requests` without a fingerprint.
+- Use **Playwright headless Chromium** for all page fetches — JS-rendered, `networkidle` wait, 30-second timeout per page.
+- One browser instance per domain, reused across all page fetches to avoid cold-start overhead.
 - Crawl homepage + up to 5 internal pages per domain (shallow only).
-- **2-second delay** between requests; **10-second timeout** per page.
-- Wrap every domain in `try/except` — one failed domain must not abort the run.
-- Log timeouts, 403s, 404s and all other errors to `output/errors.log`.
+- **2-second delay** between pages; wrap every domain in `try/except` — one failed domain must not abort the run.
+- Log timeouts, errors, and DNS-dead domains to `output/{dataset}/errors.log`.
 - Print to console: `[n/total] Scanning: domain` for every domain.
 
 ### Link Parsing / Detection
@@ -64,7 +64,7 @@ mistral.ai
 ```
 
 ### Pre-scan
-- Use **Google Web Risk API** (GCP-native successor to Safe Browsing v4) via `google-cloud-webrisk`.
+- Use **Google Safe Browsing Lookup API v4** (free tier, 100k lookups/month) via direct HTTP — not the Web Risk API.
 - Supplement with lightweight heuristics (see `prescanner.py`).
 
 ---
