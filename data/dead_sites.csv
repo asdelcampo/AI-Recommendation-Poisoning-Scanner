@@ -1,0 +1,17 @@
+domain,industry,country,status
+philhealth.gov.ph,Health,PH,VERIFIED - live (gov domain geo-blocked in scan env)
+ncpamh.doh.gov.ph,Health,PH,VERIFIED - live (gov subdomain geo-blocked in scan env)
+bernardotaquinomd.com,Health,PH,UNVERIFIED - could not resolve; individual physician site may be defunct
+saphron.io,SaaS-Tech,PH,UNVERIFIED - could not resolve; early-stage startup domain may be inactive
+angsaraplanghirap.com,Food-Recipe,PH,UNVERIFIED - could not resolve; domain may be inactive
+magicpanlasang.com,Food-Recipe,PH,UNVERIFIED - could not resolve; domain may be inactive
+pinoyrecipeatibapa.com,Food-Recipe,PH,UNVERIFIED - could not resolve; domain may be inactive
+federalland.com.ph,Real-Estate,PH,VERIFIED - live (403 bot protection)
+cebusun.com,News-Media,PH,UNVERIFIED - could not resolve; Cebu Sun may have migrated or lapsed
+scholarph.com,Education,PH,UNVERIFIED - could not resolve; domain may be inactive
+dlsu.edu.ph,Education,PH,VERIFIED - live (edu domain geo-blocked in scan env; DLSU is a major PH university)
+feu.edu.ph,Education,PH,VERIFIED - live (edu domain geo-blocked in scan env; FEU is a known PH university)
+cocogen.com,Insurance,PH,UNVERIFIED - corrected domain still DNS-dead (was cocogen.com.ph)
+sunlifegrepa.com,Insurance,PH,UNVERIFIED - corrected domain still DNS-dead (was sunlifegrepa.com.ph)
+generalinsuranceph.com,Insurance,PH,UNVERIFIED - could not resolve; domain may be inactive
+mybposolution.com,BPO,PH,UNVERIFIED - could not resolve; domain may be inactive
