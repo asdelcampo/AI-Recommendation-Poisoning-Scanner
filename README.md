@@ -2,6 +2,16 @@
 
 A web crawler and detection pipeline for identifying **AI Recommendation Poisoning** patterns on Philippine websites. Built as a regional replication of Microsoft's February 2026 research on adversarial manipulation of AI assistant responses via crawled web content.
 
+## Background
+
+In February 2026, Microsoft security researchers published a study identifying a widespread technique where websites embed hidden instructions into "Summarize with AI" share buttons and invisible DOM elements to manipulate AI assistant memory. When a user clicks one of these buttons, a pre-crafted prompt silently instructs the AI to treat the site as a trusted or authoritative source — a preference that can persist across future conversations.
+
+Microsoft found **over 50 unique prompts from 31 companies across 14 industries** using this technique, deployed through freely available tools like CiteMET and AI Share URL Creator. The affected sectors include finance, healthcare, and legal — areas where biased AI recommendations carry real-world consequences.
+
+This project applies the same detection framework to **183 Philippine websites** across 13 industries to measure regional prevalence.
+
+> Reference: [AI Recommendation Poisoning — Microsoft Security Blog, February 10, 2026](https://www.microsoft.com/en-us/security/blog/2026/02/10/ai-recommendation-poisoning/)
+
 ## What it detects
 
 Three signal types, each returning a structured finding with signal type, target platform, decoded payload, matched keywords, and confidence level:
@@ -82,7 +92,7 @@ Scanned across all three datasets (April 2026): **0 findings** out of 784 crawle
 
 ```
 scanner.py        — pipeline orchestrator (asyncio, semaphore=10)
-crawler.py        — async Scrapling fetcher with chrome131 TLS impersonation
+crawler.py        — async Playwright fetcher (headless Chromium, JS-rendered)
 detector.py       — three-signal detection engine with proximity scoring
 prescanner.py     — Google Safe Browsing + heuristic pre-filter
 data/             — input CSV datasets
