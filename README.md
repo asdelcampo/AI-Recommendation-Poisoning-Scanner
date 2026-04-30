@@ -1,6 +1,6 @@
 # AIPoison Scanner
 
-A web crawler and detection pipeline for identifying **AI Recommendation Poisoning** patterns on Philippine and Southeast Asian websites. Built as a regional replication of Microsoft's February 2026 research on adversarial manipulation of AI assistant responses via crawled web content.
+A web crawler and detection pipeline for identifying **AI Recommendation Poisoning** patterns on Philippine websites. Built as a regional replication of Microsoft's February 2026 research on adversarial manipulation of AI assistant responses via crawled web content.
 
 ## What it detects
 
@@ -33,7 +33,7 @@ echo "GOOGLE_API_KEY=<your-key>" > .env
 ## Usage
 
 ```bash
-# Primary PH/SEA dataset (183 domains)
+# Primary PH dataset (183 domains)
 python scanner.py --dataset PHSEAsites
 
 # Global top-200 baseline
@@ -60,7 +60,7 @@ output/PHSEAsites/
 
 | File | Description | Domains |
 |---|---|---|
-| `data/PHSEAsites.csv` | PH/SEA regional — 13 industries | 183 |
+| `data/PHSEAsites.csv` | PH regional — 13 industries | 183 |
 | `data/Top200.csv` | Tranco global top 200 | 200 |
 | `data/Arb500.csv` | Tranco arbitrary 500 | 500 |
 

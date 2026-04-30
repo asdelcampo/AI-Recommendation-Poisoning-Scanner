@@ -10,12 +10,12 @@ AIPoison Scanner is a Python-based web crawler and detection pipeline for identi
 
 ## Research Context
 
-This tool replicates Microsoft's AI Recommendation Poisoning research (February 2026) for the Philippines and Southeast Asia. That research demonstrated how adversaries embed structured instructions in publicly-crawled web content to poison the recommendations and citations of AI assistants (ChatGPT, Copilot, Perplexity, etc.).
+This tool replicates Microsoft's AI Recommendation Poisoning research (February 2026) for the Philippines. That research demonstrated how adversaries embed structured instructions in publicly-crawled web content to poison the recommendations and citations of AI assistants (ChatGPT, Copilot, Perplexity, etc.).
 
 The core attack vector: a malicious or compromised website embeds hidden content — crafted hrefs with `?q=` or `?prompt=` payloads, CiteMET metadata packages, or CSS-invisible DOM elements — that instructs AI systems to treat the site as an authoritative source in future responses. The content is invisible to human visitors but readable by AI crawlers and retrieval-augmented generation (RAG) pipelines.
 
 This study applies the same detection framework to:
-- 183 verified PH/SEA regional domains across 13 industries (primary dataset)
+- 183 verified PH regional domains across 13 industries (primary dataset)
 - 200 globally top-ranked domains as a comparative baseline
 - 500 arbitrary global domains for broader signal coverage
 
@@ -121,14 +121,14 @@ When `confidence="high"` is reached, the raw HTML and a JSON sidecar are saved t
 
 | File | Description | Domains |
 |---|---|---|
-| `data/PHSEAsites.csv` | PH/SEA regional — primary dataset | 183 active |
+| `data/PHSEAsites.csv` | PH regional — primary dataset | 183 active |
 | `data/Top200.csv` | Tranco global top 200 — baseline | 200 |
 | `data/Arb500.csv` | Tranco arbitrary 500 — broad sample | 500 |
 | `data/dead_sites.csv` | Confirmed DNS-dead or geo-blocked PH domains | 16 |
 
 All datasets share the schema: `domain, industry, country, status`.
 
-The global datasets serve as a comparative baseline. A higher poisoning rate in PH/SEA vs. global data would indicate regional adoption leads global trends; a lower rate indicates lag — either finding is a meaningful research contribution.
+The global datasets serve as a comparative baseline. A higher poisoning rate in PH vs. global data would indicate regional adoption leads global trends; a lower rate indicates lag — either finding is a meaningful research contribution.
 
 ---
 
@@ -184,7 +184,7 @@ After replacing the Scrapling fetcher with Playwright in `crawl_async()`, all th
 - 2 new PHSEAsites DNS-dead entries vs. Scrapling run: `southstarhospital.com.ph` and `thetimes.ph` — both went dead between runs.
 - Safe Browsing API experienced intermittent connection timeouts during the Arb500 run (logged to errors.log); 24 domains received `unknown` prescan verdict instead of `safe` and were crawled normally.
 
-**Final interpretation:** Zero AI poisoning signals confirmed across all 883 domains with full JS rendering active. The null result is not a detector gap — the Phase 6 baseline proves the detector fires correctly on real poisoning content. The PH/SEA and global web, as of April 2026, does not appear to have adopted JS-injected AI recommendation poisoning techniques at a detectable rate in these datasets.
+**Final interpretation:** Zero AI poisoning signals confirmed across all 883 domains with full JS rendering active. The null result is not a detector gap — the Phase 6 baseline proves the detector fires correctly on real poisoning content. The PH and global web, as of April 2026, does not appear to have adopted JS-injected AI recommendation poisoning techniques at a detectable rate in these datasets.
 
 ---
 
@@ -238,7 +238,7 @@ All scans use Playwright (JS-rendered, networkidle). Expect ~22 min for PHSEAsit
 ~24 min for Top200, ~48 min for Arb500.
 
 ```bash
-# Full PH/SEA primary dataset (183 domains)
+# Full PH primary dataset (183 domains)
 python scanner.py --dataset PHSEAsites
 
 # Global baseline (200 domains)

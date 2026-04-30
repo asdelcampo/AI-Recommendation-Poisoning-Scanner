@@ -84,7 +84,7 @@ aipoison-scanner/
 ├── scanner.py
 ├── requirements.txt
 ├── data/
-│   ├── PHSEAsites.csv      ← primary dataset (175 active PH/SEA domains)
+│   ├── PHSEAsites.csv      ← primary dataset (175 active PH domains)
 │   ├── Top200.csv          ← global baseline (Tranco top 200)
 │   ├── Arb500.csv          ← global sample (Tranco 500 arbitrary)
 │   └── dead_sites.csv      ← 25 dead/geo-blocked domains removed from PHSEAsites
@@ -99,4 +99,4 @@ aipoison-scanner/
 
 ## Research Context
 
-This tool is a PH/SEA regional replication of Microsoft's AI Recommendation Poisoning research (February 2026). All design decisions should be evaluated against the goal of **detecting attacker-controlled content that manipulates AI assistant responses via search or citation pathways**.
+This tool is a PH regional replication of Microsoft's AI Recommendation Poisoning research (February 2026). All design decisions should be evaluated against the goal of **detecting attacker-controlled content that manipulates AI assistant responses via search or citation pathways**.

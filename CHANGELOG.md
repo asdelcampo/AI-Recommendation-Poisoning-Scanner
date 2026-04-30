@@ -226,7 +226,7 @@ Issues
 
 Added
 - data/ directory; all CSV files moved there
-- data/PHSEAsites.csv (renamed from sites.csv — 175 active PH/SEA domains)
+- data/PHSEAsites.csv (renamed from sites.csv — 175 active PH domains)
 - data/dead_sites.csv (moved from root — 25 confirmed-dead or geo-blocked domains)
 - data/Top200.csv (new — top 200 global domains from Tranco top-1M)
 - data/Arb500.csv (new — arbitrary 500 global domains from Tranco top-1M)
