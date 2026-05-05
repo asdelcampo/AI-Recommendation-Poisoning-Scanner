@@ -79,25 +79,58 @@ Add a custom dataset by creating `data/MyDataset.csv` with columns `domain,indus
 ## Unit tests
 
 ```bash
-python detector.py    # 8/8 detection engine tests
-python prescanner.py  # 5/5 pre-scan tests
-python crawler.py     # crawler smoke test (fetches example.com)
+python3 detector.py    # 8/8 detection engine tests
+python3 prescanner.py  # 5/5 pre-scan tests
+python3 crawler.py     # crawler smoke test (fetches example.com)
 ```
+
+## Evaluation
+
+`eval.py` is a fixed benchmark suite that measures detector accuracy against 8 labeled ground truth URLs (4 positive, 4 negative). All fetches use Playwright.
+
+```bash
+python3 eval.py
+```
+
+**Results (May 2026):**
+
+| Metric | Score |
+|---|---|
+| Precision | **1.00** |
+| Recall | **0.75** |
+| F1 | **0.86** |
+
+| | Count |
+|---|---|
+| True Positives | 3 |
+| False Negatives | 1 |
+| True Negatives | 4 |
+| False Positives | 0 |
+
+**Signal breakdown across positives:**
+
+| Signal | Findings |
+|---|---|
+| `ai_poisoning_link` | 6 across 3 URLs |
+| `citemet` | 191 across 3 URLs |
+| `hidden_text` | 0 |
+
+The one false negative (`managednerds.com`) was an article that appeared in search results with a raw CiteMET button, but the live page no longer renders the `?prompt=remember` payload at fetch time — the content changed between discovery and evaluation. Zero false positives across all tested AI-adjacent clean pages.
 
 ## Findings
 
-Scanned across all three datasets (April 2026): **0 findings** out of 784 crawled domains. See `DOCUMENTATION.md` for full methodology and result interpretation.
+Scanned across all three datasets (April 2026): **0 findings** out of 784 crawled domains.
 
 ## Project files
 
 ```
-scanner.py        — pipeline orchestrator (asyncio, semaphore=10)
-crawler.py        — async Playwright fetcher (headless Chromium, JS-rendered)
-detector.py       — three-signal detection engine with proximity scoring
-prescanner.py     — Google Safe Browsing + heuristic pre-filter
-data/             — input CSV datasets
-output/           — per-dataset results, summaries, logs, evidence
-DOCUMENTATION.md  — full technical narrative and methodology
-CHANGELOG.md      — version history
-IMPLEMENTATION.md — phase-by-phase task tracker
+scanner.py         — pipeline orchestrator (asyncio, semaphore=10)
+crawler.py         — async Playwright fetcher (headless Chromium, JS-rendered)
+detector.py        — three-signal detection engine with proximity scoring
+prescanner.py      — Google Safe Browsing + heuristic pre-filter
+eval.py            — ground truth benchmark (Precision 1.00, Recall 0.75, F1 0.86)
+playwright_fetcher.py — JS-rendered page fetcher (used by crawler and eval)
+data/              — input CSV datasets
+output/            — per-dataset results, summaries, logs, evidence
+CHANGELOG.md       — version history
 ```
