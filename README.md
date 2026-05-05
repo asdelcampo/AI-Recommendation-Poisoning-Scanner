@@ -8,7 +8,7 @@ In February 2026, Microsoft security researchers published a study identifying a
 
 Microsoft found **over 50 unique prompts from 31 companies across 14 industries** using this technique, deployed through freely available tools like CiteMET and AI Share URL Creator. The affected sectors include finance, healthcare, and legal — areas where biased AI recommendations carry real-world consequences.
 
-This project applies the same detection framework to **183 Philippine websites** across 13 industries to measure regional prevalence.
+This project applies the same detection framework to **200 Philippine websites** across 13 industries to measure regional prevalence.
 
 > Reference: [AI Recommendation Poisoning — Microsoft Security Blog, February 10, 2026](https://www.microsoft.com/en-us/security/blog/2026/02/10/ai-recommendation-poisoning/)
 
@@ -43,7 +43,7 @@ echo "GOOGLE_API_KEY=<your-key>" > .env
 ## Usage
 
 ```bash
-# Primary PH dataset (183 domains)
+# Primary PH dataset (184 active domains)
 python scanner.py --dataset PHSEAsites
 
 # Global top-200 baseline
@@ -70,7 +70,7 @@ output/PHSEAsites/
 
 | File | Description | Domains |
 |---|---|---|
-| `data/PHSEAsites.csv` | PH regional — 13 industries | 183 |
+| `data/PHSEAsites.csv` | PH regional — 13 industries, 200 total (184 active, 16 dead/unreachable in `dead_sites.csv`) | 184 |
 | `data/Top200.csv` | Tranco global top 200 | 200 |
 | `data/Arb500.csv` | Tranco arbitrary 500 | 500 |
 
