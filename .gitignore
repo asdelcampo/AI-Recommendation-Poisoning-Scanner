@@ -21,6 +21,11 @@ env/
 # Output (generated scan results — not source)
 output/
 
+# Internal project docs
+CLAUDE.md
+DOCUMENTATION.md
+IMPLEMENTATION.md
+
 # macOS
 .DS_Store
 .AppleDouble
