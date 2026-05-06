@@ -23,6 +23,7 @@ output/
 
 # Internal project docs
 CLAUDE.md
+CHANGELOG.md
 DOCUMENTATION.md
 IMPLEMENTATION.md
 
